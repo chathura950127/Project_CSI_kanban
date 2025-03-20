@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="index.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
   </head>
   <body>
     
@@ -20,7 +21,7 @@
                   <div>
                     <i class="bi bi-grid-3x3-gap-fill" style="margin:15px ;"></i>
                     <img src="logo192.png" alt=""style="width: 35px;height: 35;">
-                    <span style="margin-right: 5px;">JIRA</span>
+                    <span style="margin-right: 5px;">CSI Board</span>
                     <button class="top_bar_Left_Side_button"><span>Your Details </span><i class="bi bi-chevron-down  "></i></button>
                     <button class="top_bar_Left_Side_button"><span>Project </span><i class="bi bi-chevron-down"></i></button>
                     <button class="top_bar_Left_Side_button"><span>Filters </span><i class="bi bi-chevron-down"></i></button>
@@ -48,7 +49,7 @@
                   <button class="top_bar_Right_Side_button"><i class="bi bi-bell"></i></button>
                   <button class="top_bar_Right_Side_button"><i class="bi bi-question-circle-fill"></i></button>
                   <button class="top_bar_Right_Side_button"><i class="bi bi-gear"></i></button>
-                  <button class="top_bar_Right_Side_button"><img src="logo192.png" class="top_bar_profile_image"/></button>
+                  <button class="profile-btn"><img src="profile-pic.png" class="top_bar_profile_image"/></button>
                 </div>
              </div>
       </div>
@@ -59,29 +60,85 @@
           <div class="col-md-2 bg-light d-flex flex-column" >
 
               <div class="sidebar">
-                <div class="sidebar-header">
-                    <i class="bi bi-list toggle-btn"></i> <!-- Sidebar Toggle Button -->
-                    <span class="sidebar-title">Ceysell</span> <!-- Your project name -->
+                     <!-- Sidebar Toggle Button -->
+                <div class=" row-12 sidebar-header">
+                    <div class="col-md-2">
+                      <img src="logo192.png" alt="company logo" class="project_img">
+                    </div>
+                    <div class="col-md-10">
+                      <div class="row-12"><span class="sidebar-title">Gastomaster</span></div>
+                      <div class="row-12 side_menu_header"><span>software project</span></div>
+                    </div>
+                    <button class="slider_collaps_button"><i class="bi bi-chevron-double-left"></i></button>
+                    
                 </div>
             
                 <ul class="sidebar-menu">
-                    <li class="menu-item active">
-                        <i class="bi bi-kanban"></i>
-                        <span>Kanban Board</span>
+                  <span>PLANNING</span>
+                    <li class="menu-item">
+                      <i class="bi bi-globe2"></i>
+                      <span>Summary</span>
                     </li>
                     <li class="menu-item">
-                        <i class="bi bi-bar-chart-line"></i>
-                        <span>Reports</span>
+                      <i class="bi bi-bar-chart-steps"></i>
+                        <span>Timeline</span>
                     </li>
                     <li class="menu-item">
-                        <i class="bi bi-people"></i>
-                        <span>Teams</span>
+                      <i class="bi bi-card-list"></i>
+                        <span>Backlog</span>
                     </li>
                     <li class="menu-item">
-                        <i class="bi bi-gear"></i>
-                        <span>Settings</span>
+                      <i class="bi bi-layout-three-columns"></i>
+                        <span>Board</span>
+                    </li>
+                    <li class="menu-item">
+                      <i class="bi bi-calendar-day"></i>
+                      <span>Calende</span>
+                     </li>
+                    <li class="menu-item">
+                      <i class="bi bi-list-task"></i>
+                        <span>List</span>
+                    </li>
+                   <li class="menu-item">
+                    <i class="bi bi-menu-button"></i>
+                      <span>Forms</span>
+                     </li>
+                    <li class="menu-item">
+                      <i class="bi bi-record-circle"></i>
+                      <span>Goals</span>
+                    </li>
+                    <li class="menu-item">
+                      <i class="bi bi-collection"></i>
+                      <span>Issues</span>
                     </li>
                 </ul>
+                <ul class="sidebar-menu">
+                  <span>DEVELOPMENT</span>
+                    <li class="menu-item">
+                      <i class="bi bi-code-slash"></i>
+                        <span>Code</span>
+                    </li>
+                </ul>
+                <div class="saperator"></div>
+                <ul class="sidebar-menu">
+                    <li class="menu-item">
+                      <i class="bi bi-file-text"></i>
+                        <span>Project pages</span>
+                    </li>
+                    <li class="menu-item">
+                      <i class="bi bi-window-plus"></i>
+                      <span>Add shortcut</span>
+                  </li>
+                  <li class="menu-item">
+                    <i class="bi bi-gear-wide"></i>
+                    <span>Project setting</span>
+                </li>
+                </ul>
+                <div class="side_menu_footer ">
+                  <span>You're in a team managed project<br>
+                  Learn more</span>
+                </div>
+                
             </div>
             
                 
@@ -135,11 +192,12 @@
                                         </div>
                                         <div class="col-md-4"><!-- member filter Section -->
                                           <div class="btn-group mr-2 member_button_group" role="group" aria-label="First group">
-                                            <button type="button" class="member_button">1</button>
-                                            <button type="button" class="member_button">2</button>
-                                            <button type="button" class="member_button">3</button>
-                                            <button type="button" class="member_button">4</button>
-                                            <button type="button" class="member_button">5</button>
+                                            <button class="profile-btn"><img src="profile-pic.png" alt="" class="member_button"></button>
+                                            <button class="profile-btn"><img src="profile-pic1.png" alt="" class="member_button"></button>
+                                            <button class="profile-btn"><img src="profile-pic3.jpeg" alt="" class="member_button"></button>
+                                            <button class="profile-btn"><img src="profile-pic2.jpg" alt="" class="member_button"></button>
+                                            <button class="profile-btn"><img src="profile-pic4.jfif" alt="" class="member_button"></button>
+                                            <button class="profile-btn"><img src="profile-pic5.jpg" alt="" class="member_button"></button>
                                             <button type="button" class="member_button_for_member_add">+</button>
                                           </div>
                                         </div>
@@ -199,18 +257,18 @@
                                   <div class=" task_section">
 
                                         <div class="task" draggable="true" data-type="task"><!--Task Card secction-->
-                                          <div class="task_headline"><span>Task 1</span> </div> <!--Title ofTask Card secction-->
-                                          <div class="task_footer"><i class="bi bi-check-square text-primary"></i><span>GMOQ-115</span><img src="logo192.png" class="membr_profile_img"></div><!--Footer of Task Card secction-->
+                                          <div class="task_headline"><span>System did not display the profile image on top bar && Profile pages</span> </div> <!--Title ofTask Card secction-->
+                                          <div class="task_footer"><i class="bi bi-check-square text-primary"></i><span>GMOQ-115</span><button class="profile-btn"><img src="profile-pic.png" class="membr_profile_img"></button></div><!--Footer of Task Card secction-->
                                         </div>
                     
                                         <div class="task" draggable="true" data-type="bug"><!--Task Card secction-->
-                                          <div class="task_headline"><span>Task 2</span> </div> <!--Title ofTask Card secction-->
-                                          <div class="task_footer"><i class="bi bi-bug text-danger"></i><span>GMOQ-117</span><img src="logo192.png" class="membr_profile_img"></div><!--Footer of Task Card secction-->
+                                          <div class="task_headline"><span>clear the all consol logs n entire project</span> </div> <!--Title ofTask Card secction-->
+                                          <div class="task_footer"><i class="bi bi-bug text-danger"></i><span>GMOQ-117</span><button class="profile-btn"><img src="profile-pic3.jpeg" class="membr_profile_img"></button></div><!--Footer of Task Card secction-->
                                         </div>
 
                                         <div class="task" draggable="true" data-type="story"><!--Task Card secction-->
-                                          <div class="task_headline"><span>Task 3</span> </div> <!--Title ofTask Card secction-->
-                                          <div class="task_footer"><i class="bi bi-card-list text-success"></i></i><span>GMOQ-119</span><img src="logo192.png" class="membr_profile_img"></div><!--Footer of Task Card secction-->
+                                          <div class="task_headline"><span>side menu did not work on properly</span> </div> <!--Title ofTask Card secction-->
+                                          <div class="task_footer"><i class="bi bi-card-list text-success"></i></i><span>GMOQ-119</span><button class="profile-btn"><img src="profile-pic5.jpg" class="membr_profile_img"></button></div><!--Footer of Task Card secction-->
                                         </div>
                                       
 

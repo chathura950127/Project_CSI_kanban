@@ -35,7 +35,35 @@ document.querySelectorAll(".filter_checkbox").forEach(checkbox => {
 });
 
 
+document.addEventListener("DOMContentLoaded", function () {
+    let toggleBtn = document.querySelector(".slider_collaps_button");
+    let sidebar = document.querySelector(".sidebar");
+    let kanbanBoard = document.querySelector(".body_of_board");
+    let toggleIcon = document.querySelector(".slider_collaps_button i");
 
-document.querySelector(".toggle-btn").addEventListener("click", function () {
-    document.querySelector(".sidebar").classList.toggle("collapsed");
+    if (!toggleBtn || !sidebar || !kanbanBoard || !toggleIcon) {
+        console.error("One or more required elements are missing from the DOM.");
+        return;
+    }
+
+    toggleBtn.addEventListener("click", function () {
+        sidebar.classList.toggle("collapsed");
+
+        // Adjust Kanban board width
+        kanbanBoard.style.width = sidebar.classList.contains("collapsed") 
+            ? "calc(100% - 85px)" 
+            : "calc(100% - 250px)";
+
+        // Toggle button icon
+        if (sidebar.classList.contains("collapsed")) {
+            toggleIcon.classList.remove("bi-chevron-double-left");
+            toggleIcon.classList.add("bi-chevron-double-right");
+        } else {
+            toggleIcon.classList.remove("bi-chevron-double-right");
+            toggleIcon.classList.add("bi-chevron-double-left");
+        }
+    });
 });
+
+
+
