@@ -1,17 +1,41 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const tasks = document.querySelectorAll('.task');
+const task_section = document.querySelectorAll('.task_section');
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+tasks.forEach(task => {
+    task.addEventListener('dragstart', () => {
+        task.classList.add('dragging');
+    });
+
+    task.addEventListener('dragend', () => {
+        task.classList.remove('dragging');
+    });
+});
+
+task_section.forEach(column => {
+    column.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        const dragging = document.querySelector('.dragging');
+        column.appendChild(dragging);
+    });
+});
+
+document.querySelectorAll(".filter_checkbox").forEach(checkbox => {
+    checkbox.addEventListener("change", function() {
+        let selectedTypes = Array.from(document.querySelectorAll(".filter_checkbox:checked"))
+            .map(cb => cb.value);
+
+        document.querySelectorAll(".task").forEach(task_card => {
+            task_card.style.display = selectedTypes.includes(task_card.dataset.type) ? "block":"none";
+            
+        });
+    });
+});
+
+
+
+document.querySelector(".toggle-btn").addEventListener("click", function () {
+    document.querySelector(".sidebar").classList.toggle("collapsed");
+});

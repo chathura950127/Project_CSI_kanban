@@ -1,13 +1,529 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Arial, sans-serif;
+  display: flex;
+  height: 100vh;
+  background-color: #ffffff; 
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+span{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  line-height: 15px;
+  font-weight: 450;
+}
+.Top_bar_Row{
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.205);
+  position: static;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: grab;
+  padding: 5px;
+}
+.top_bar_sections1{
+  display: flex;
+  padding:  5px 5px 0px 5px;
+  justify-content: start;
+
+}
+.top_bar_sections2{
+  display: flex;
+  padding:  5px 5px 0px 5px;
+  justify-content: Center;
+}
+.top_bar_sections3{
+  display: flex;
+  padding:  5px 5px 0px 5px;
+  justify-content: end;
+}
+
+.top_bar_Left_Side_button{
+  color: #44546F;
+  font-size: 14px;
+  line-height: 32px;
+  font-weight: 500;
+  width: fit-content;
+  align-items: center;
+  border: none;
+  justify-items: center;
+  background-color: #3c3c3d00;
+  padding: 1px 10px 1px 10px;
+  border-radius: 5%;
+  text-align: center;
+}
+
+.top_bar_Left_Side_button:hover {
+  color: #44546F;
+  font-size: 14px;
+  line-height: 32px;
+  font-weight: 500;
+  border: none;
+  background-color: #3c3c3d17;
+  width: fit-content;
+  align-items: center;
+  padding: 1px 10px 1px 10px;
+  border-radius: 5%;
+}
+
+
+.top_bar_Right_Side_button{
+  width: 35px;
+  align-items: center;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 20px;
+  border: none;
+  justify-items: center;
+  background-color: #3c3c3d00;
+}
+
+.top_bar_Right_Side_button:hover {
+  border: none;
+  background-color: #3c3c3d3d;
+  width: 35px;
+  height:35px;
+  align-items: center;
+  border-radius: 50%;
+}
+.top_bar_profile_image{
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  justify-self: center;
+}
+
+.side_menu_row{
+  padding: 2px;
+  display: flex;
+
+}
+
+.details_section{
+  display: flex;
+}
+
+/* Default button style */
+.button_details_sction {
+  display:flex;
+  justify-content:center;
+  border: none;
+  background-color: #f7f8f900; 
+  padding: 4px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+}
+
+
+/* Hover effect for the button */
+.button_details_sction:hover {
+  display: flex;
+  border: none;
+  background-color: #3c3c3d3d;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+}
+
+.search_container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 400px; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+  overflow: hidden; 
+}
+
+.search_bar {
+  flex: 1;
+  height: 35px;
+  border: none;
+  padding: 5px 10px;
+  font-size: 14px;
+  outline: none; 
+}
+
+.search_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 35px;
+  border: none;
+  background: #f4f5f7; 
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.search_button:hover {
+  background: #dfe1e6; 
+}
+
+.search_button i {
+  font-size: 16px;
+  color: #172b4d;
+}
+
+
+.member_button_group{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.member_button{
+  background-color:#091E42;
+  border-style: double;
+  border-color: #f7f8f9;
+  width: 35px;
+  height:35px;
+  border-radius: 50%;
+  margin-left: -10px;
+  color: #f7f8f9;
+}
+.member_button_for_member_add{
+  background-color:#091E42;
+  border-style: double;
+  border-color: #f7f8f9;
+  width: 35px;
+  height:35px;
+  border-radius: 50%;
+  margin-left: 10px;
+  color: #f7f8f9;
+}
+
+.filter_dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.filter_button {
+  background: #f4f5f7;
+  border: 1px solid #dfe1e6;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.filter_button:hover {
+  background: #dfe1e6;
+}
+
+.dropdown_content {
+  display: none;
+  position: absolute;
+  background: white;
+  border: 1px solid #dfe1e6;
+  border-radius: 4px;
+  padding: 10px;
+  min-width: 120px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filter_dropdown:hover .dropdown_content {
+  display: block;
+}
+
+.dropdown_content label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.default_btn_teme{
+ width: 100%;
+ height: 100%;
+ background-color: #3c3c3d3d;
+ border: none;
+ color: black;
+}
+
+.kanban_board_section{
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.body_of_board{
+  height: 90vh;
+}
+.board {
+  margin:5px;
+  justify-content: start;
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.column {
+  width: 300px;
+  background: #f7f8f9; 
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.column_name_section{
+  width:270px;
+  height:26px;
+  border-radius:0px;
+  background-color: #f7f8f9;
+  color: #172b4d;
+  font-weight: 400;
+}
+
+.task_section{
+  width: 100%;
+  min-height:30px;
+}
+
+.add_new_task_section{
+  width: 100%;
+}
+
+.column h4 {
+  color: #626F86;
+  background-color: #091E42,transparent 2.70%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  padding: 0;
+}
+.task_headline span, .task_footer span{
+  color: #172B4D;
+  background-color: #091E42,transparent 6.00%; 
+  font-family: -apple-system;
+  font-size: 14px;
+  line-height: 40px;
+  font-weight: 400;
+  padding: 0;
+}
+
+.task{
+  background: #ffffff; 
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 5px 10px 0 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: grab;
+  min-width: 260px;
+  min-height: 100px;
+}
+
+.task_footer {
+  display:flex;
+  align-items: center;
+  justify-content:space-between;
+}
+
+.membr_profile_img{
+  width: 25px;
+  border-radius: 50%;
+}
+
+/* Default button style */
+.add_new_task_btn {
+  display:flex;
+  justify-content:start;
+  border: none;
+  background-color: #f7f8f900; 
+  padding: 5px;
+  cursor: pointer;
+  min-width: 280px;
+  min-height: 40px;
+  border-radius: 5px;
+}
+
+/* Style for span inside the button */
+.add_new_task_btn span {
+  color: #172b4d00;
+  background-color: #091e4200;
+  font-family: -apple-system;
+  font-size: 14px;
+  line-height: 40px;
+  font-weight: 400;
+  padding: 2px;
+  margin-left: 5px;
+}
+
+/* Hover effect for the button */
+.add_new_task_btn:hover {
+  display: flex;
+  border: none;
+  background-color: #3c3c3d3d;
+  min-width: 280px;
+  min-height: 40px;
+  border-radius: 5px;
+}
+
+.add_new_task_btn:hover span {
+  color: #172B4D;
+  background-color: #091E42,transparent 6.00%; 
+  font-family: -apple-system;
+  font-size: 14px;
+  line-height: 40px;
+  font-weight: 400;
+  padding: 2px;
+  margin-left: 5px;
+}
+/* Initially hide the icon */
+.add_new_task_btn i {
+  opacity: 0;
+  display: none; 
+}
+
+/* Show icon when column is hovered */
+.add_new_task_btn:hover i {
+  opacity: 1;
+  display: block;
+}
+
+
+
+
+
+
+/* Sidebar Container */
+.sidebar {
+  position: fixed;
+  left: 0;
+  height: 100vh;
+  width: 250px;
+  background-color: #172B4D; /* Jira Dark Blue */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  transition: width 0.3s ease-in-out;
+}
+
+/* Sidebar Collapsed */
+.sidebar.collapsed {
+  width: 80px;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.sidebar-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Sidebar Menu */
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.menu-item i {
+  font-size: 20px;
+}
+
+/* Active or Hover Effect */
+.menu-item:hover, .menu-item.active {
+  background-color: #0052CC; /* Jira Blue */
+}
+
+/* Hide text when sidebar is collapsed */
+.sidebar.collapsed .menu-item span {
+  display: none;
+}
+
+.sidebar.collapsed .sidebar-title {
+  display: none;
+}
+/* Sidebar Container */
+.sidebar {
+    position: fixed;
+    left: 0;
+    height: 100vh;
+    width: 250px;
+    background-color: #172b4dbe; /* Jira Dark Blue */
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    transition: width 0.3s ease-in-out;
+}
+
+/* Sidebar Collapsed */
+.sidebar.collapsed {
+    width: 80px;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.sidebar-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Sidebar Menu */
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.menu-item i {
+    font-size: 20px;
+}
+
+/* Active or Hover Effect */
+.menu-item:hover, .menu-item.active {
+    background-color: #0052CC; /* Jira Blue */
+}
+
+/* Hide text when sidebar is collapsed */
+.sidebar.collapsed .menu-item span {
+    display: none;
+}
+
+.sidebar.collapsed .sidebar-title {
+    display: none;
 }
