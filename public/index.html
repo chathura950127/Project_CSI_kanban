@@ -247,58 +247,43 @@
                       <!---------------------------------------------------------------------------------------------------------------------------------------
                                                               Todo COLUMN
                      ------------------------------------------------------------------------------------------------------------------------------------------>
-                            <div class="column" id="todo">
+                            <div class="column" id="todo_column">
                                   <div class="column_name_section"><h4>To Do</h4></div><!--column Name Section-->
-                                  <div class=" task_section">
-
-                                        <div class="task" draggable="true" data-type="task"><!--Task Card secction-->
-                                          <div class="task_headline"><span>System did not display the profile image on top bar && Profile pages</span> </div> <!--Title ofTask Card secction-->
-                                          <div class="task_footer"><i class="bi bi-check-square text-primary"></i><span>GMOQ-115</span><button class="profile-btn"><img src="profile-pic.png" class="membr_profile_img"></button></div><!--Footer of Task Card secction-->
-                                        </div>
-                    
-                                        <div class="task" draggable="true" data-type="bug"><!--Task Card secction-->
-                                          <div class="task_headline"><span>clear the all consol logs n entire project</span> </div> <!--Title ofTask Card secction-->
-                                          <div class="task_footer"><i class="bi bi-bug text-danger"></i><span>GMOQ-117</span><button class="profile-btn"><img src="profile-pic3.jpeg" class="membr_profile_img"></button></div><!--Footer of Task Card secction-->
-                                        </div>
-
-                                        <div class="task" draggable="true" data-type="story"><!--Task Card secction-->
-                                          <div class="task_headline"><span>side menu did not work on properly</span> </div> <!--Title ofTask Card secction-->
-                                          <div class="task_footer"><i class="bi bi-card-list text-success"></i></i><span>GMOQ-119</span><button class="profile-btn"><img src="profile-pic5.jpg" class="membr_profile_img"></button></div><!--Footer of Task Card secction-->
-                                        </div>
-                                      
+                                  <div class=" task_section" id="todo_task_section" value="todo">
 
                                   </div><!--End the Task Section-->
                     
-                                  <div class="add_new_task_section"><!--Start the add new task Section-->
-                                        <button class="add_new_task_btn"><i class="bi bi-plus-square text-secondary" style="font-size: 30px;"></i><span>Create New Task</span></button>
-                                  </div><!--End of the add new task Section-->
+                                  <div class="add_new_task_section">
+                                    <button class="add_new_task_btn" id="new_task_todo" value="Todo"><i class="bi bi-plus-square text-secondary" style="font-size: 30px;"></i><span>Create New Task</span> </button>
+                                </div>
+                                  <!--End of the add new task Section-->
                     
                             </div><!--End the Todo column Section-->
                      <!---------------------------------------------------------------------------------------------------------------------------------------
                                                               Inprogress COLUMN
                      ------------------------------------------------------------------------------------------------------------------------------------------>  
-                              <div class="column" id="inprogress">
+                              <div class="column" id="inprogress_column">
                                 <div class="column_name_section"><h4>Inprogress</h4></div><!--column Name Section-->
-                                <div class="task_section">
+                                <div class="task_section" id="inprogress_task_section" value="inprogress">
                                       
                                 </div><!--End the Task Section-->
                     
                                 <div class="add_new_task_section"><!--Start the add new task Section-->
-                                      <button class="add_new_task_btn"><i class="bi bi-plus-square text-secondary" style="font-size: 30px;"></i><span>Create New Task</span></button>
+                                   <button class="add_new_task_btn" id="new_task_inprogress" value="Inprogress"><i class="bi bi-plus-square text-secondary" style="font-size: 30px;"></i><span>Create New Task</span></button>
                                 </div><!--End of the add new task Section-->
                     
                               </div><!--End the Todo column Section-->
                      <!---------------------------------------------------------------------------------------------------------------------------------------
                                                               DONE COLUMN
                      ------------------------------------------------------------------------------------------------------------------------------------------>       
-                              <div class="column" id="done">
+                              <div class="column" id="done_column">
                                 <div class="column_name_section"><h4>Done</h4></div><!--column Name Section-->
-                                <div class="task_section">
+                                <div class="task_section" id="done_task_section" value="'done">
                                       
                                 </div><!--End the Task Section-->
                     
                                 <div class="add_new_task_section"><!--Start the add new task Section-->
-                                      <button class="add_new_task_btn"><i class="bi bi-plus-square text-secondary" style="font-size: 30px;"></i><span>Create New Task</span></button>
+                                    <button class="add_new_task_btn" id="new_task_done" value="Done"><i class="bi bi-plus-square text-secondary" style="font-size: 30px;"></i><span>Create New Task</span></button>
                                 </div><!--End of the add new task Section-->
                     
                               </div><!--End the Todo column Section-->
@@ -306,15 +291,34 @@
                     <!-----------------------------------------------------------------------------------------------------------------------------------------> 
                         </div><!--End of the Kanban Board Section-->
                     
-
-
                   </div>
               </div>
           </div>
       </div>
   </div>
 
- 
+ <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                    New Task _pop_up page
+  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   </body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </html>
