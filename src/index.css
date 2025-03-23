@@ -472,11 +472,14 @@ span{
 
 .task_section{
   width: 100%;
-  min-height:30px;
+  min-height:40px;
+  border: 2px solid rgba(0, 0, 0, 0.015);
+  border-radius: 5px;
 }
 
 .add_new_task_section{
   width: 100%;
+  
 }
 
 .column h4 {
@@ -618,44 +621,6 @@ font-size: medium;
   border: none;
   background-color: #00000000;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
