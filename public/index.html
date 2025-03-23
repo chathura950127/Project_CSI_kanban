@@ -243,53 +243,57 @@
               <div class="row p-2 kanban_board_section mt-auto">
                   <div class="col-12">
                     
-                    <div class="board"><!--Start Kanban Board Section-->
-                      <!---------------------------------------------------------------------------------------------------------------------------------------
-                                                              Todo COLUMN
-                     ------------------------------------------------------------------------------------------------------------------------------------------>
-                            <div class="column" id="todo_column">
-                                  <div class="column_name_section"><h4>To Do</h4></div><!--column Name Section-->
-                                  <div class=" task_section" id="todo_task_section" value="todo">
+                    <div class="board" id="board"><!--Start Kanban Board Section-->
+                        <div class="task_board_section" id="task_board_section">
 
-                                  </div><!--End the Task Section-->
-                    
-                                  <div class="add_new_task_section">
-                                    <button class="add_new_task_btn" id="new_task_todo" value="Todo"><i class="bi bi-plus-square text-secondary" style="font-size: 30px;"></i><span>Create New Task</span> </button>
-                                </div>
-                                  <!--End of the add new task Section-->
-                    
-                            </div><!--End the Todo column Section-->
-                     <!---------------------------------------------------------------------------------------------------------------------------------------
-                                                              Inprogress COLUMN
-                     ------------------------------------------------------------------------------------------------------------------------------------------>  
-                              <div class="column" id="inprogress_column">
-                                <div class="column_name_section"><h4>Inprogress</h4></div><!--column Name Section-->
-                                <div class="task_section" id="inprogress_task_section" value="inprogress">
-                                      
-                                </div><!--End the Task Section-->
-                    
-                                <div class="add_new_task_section"><!--Start the add new task Section-->
-                                   <button class="add_new_task_btn" id="new_task_inprogress" value="Inprogress"><i class="bi bi-plus-square text-secondary" style="font-size: 30px;"></i><span>Create New Task</span></button>
-                                </div><!--End of the add new task Section-->
-                    
-                              </div><!--End the Todo column Section-->
-                     <!---------------------------------------------------------------------------------------------------------------------------------------
-                                                              DONE COLUMN
-                     ------------------------------------------------------------------------------------------------------------------------------------------>       
-                              <div class="column" id="done_column">
-                                <div class="column_name_section"><h4>Done</h4></div><!--column Name Section-->
-                                <div class="task_section" id="done_task_section" value="'done">
-                                      
-                                </div><!--End the Task Section-->
-                    
-                                <div class="add_new_task_section"><!--Start the add new task Section-->
-                                    <button class="add_new_task_btn" id="new_task_done" value="Done"><i class="bi bi-plus-square text-secondary" style="font-size: 30px;"></i><span>Create New Task</span></button>
-                                </div><!--End of the add new task Section-->
-                    
-                              </div><!--End the Todo column Section-->
-                              <button class="btn btn-secondary btn-sm default_btn_teme" style="width: 35px; height: 35px;padding:0; font-size: 25px; font-weight:lighter;"><i class="bi bi-plus-square"></i></button>
-                    <!-----------------------------------------------------------------------------------------------------------------------------------------> 
-                        </div><!--End of the Kanban Board Section-->
+          <!---------------------------------------------------------------------------------------------------------------------------------------
+                                                              Todo COLUMN
+          ----------------------------------------------------------------------------------------------------------------------------------------->
+                     <div class="column" id="todo_column">
+                      <div class="column_name_section"><h4>Todo</h4></div><!--column Name Section-->
+                      <div class=" task_section" id="todo_task_section">
+
+                      </div><!--End the Task Section-->
+        
+                      <div class="add_new_task_section">
+                        <button class="add_new_task_btn" id="new_task_todo"><i class="bi bi-plus-square text-secondary" style="font-size: 30px;"></i><span>Create New Task</span> </button>
+                    </div>
+                      <!--End of the add new task Section-->
+        
+                </div><!--End the Todo column Section-->
+         <!---------------------------------------------------------------------------------------------------------------------------------------
+                                                  Inprogress COLUMN
+         ------------------------------------------------------------------------------------------------------------------------------------------>  
+                  <div class="column" id="inprogress_column">
+                    <div class="column_name_section"><h4>Inprogress</h4></div><!--column Name Section-->
+                    <div class="task_section" id="inprogress_task_section">
+                          
+                    </div><!--End the Task Section-->
+        
+                    <div class="add_new_task_section"><!--Start the add new task Section-->
+                       <button class="add_new_task_btn" id="new_task_inprogress"><i class="bi bi-plus-square text-secondary" style="font-size: 30px;"></i><span>Create New Task</span></button>
+                    </div><!--End of the add new task Section-->
+        
+                  </div><!--End the inprogress column Section-->
+         <!---------------------------------------------------------------------------------------------------------------------------------------
+                                                  DONE COLUMN
+         ------------------------------------------------------------------------------------------------------------------------------------------>       
+                  <div class="column" id="done_column">
+                    <div class="column_name_section"><h4>Done</h4></div><!--column Name Section-->
+                    <div class="task_section" id="done_task_section">
+                          
+                    </div><!--End the Task Section-->
+        
+                    <div class="add_new_task_section"><!--Start the add new task Section-->
+                        <button class="add_new_task_btn" id="new_task_done"><i class="bi bi-plus-square text-secondary" style="font-size: 30px;"></i><span>Create New Task</span></button>
+                    </div><!--End of the add new task Section-->
+                  </div><!--End the inprogress column Section-->
+        <!-----------------------------------------------------------------------------------------------------------------------------------------> 
+
+                        </div>
+                    <button class="add_column_btn" id="add_column_btn"><i class="bi bi-plus-square"></i></button>
+                  
+                  </div><!--End of the Kanban Board Section-->
                     
                   </div>
               </div>
@@ -302,8 +306,14 @@
   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------->
        
 
-
-
+  <div id="column_add" class="Sm_popup" style="display: none;">
+    <div class="sm_popup_content">
+        <h3>Enter Column Name</h3>
+        <input type="text" id="column_name_input" placeholder="Column Name">
+        <button class="_pop_up_save_button" id="save_column_btn">Save</button>
+        <button class="pop_up_close_button" id="close_popup_btn">Close</button>
+    </div>
+</div>
 
 
 

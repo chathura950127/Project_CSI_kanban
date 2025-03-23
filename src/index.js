@@ -1,245 +1,140 @@
 import './index.css';
 
 document.addEventListener("DOMContentLoaded", function () {
-    const taskSections = {
-        todo: document.getElementById("todo_task_section"),
-        inprogress: document.getElementById("inprogress_task_section"),
-        done: document.getElementById("done_task_section")
-    };
-
-    let taskCounter = parseInt(localStorage.getItem('taskCounter')) || 115;
-
-    const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    savedTasks.forEach(task => {
-        createTaskCard(task.title, task.id, task.icon, task.color, task.column);
-        
-
-        // Get the last added task in that section
-        const taskSection = taskSections[task.column];
-        const lastTask = taskSection.lastElementChild;
-        const titleElement = lastTask.querySelector(".task_headline span:nth-child(2)");
-        const idElement = lastTask.querySelector(".task_headline .task-id");
-        
-        console.log("hukapan"+  taskSection);
-        if (task.column === "done") {
-            if (titleElement) titleElement.style.textDecoration = "line-through";
-            if (idElement) idElement.style.textDecoration = "line-through";
-        } else {
-            if (titleElement) titleElement.style.textDecoration = "line-through";
-            if (idElement) idElement.style.textDecoration = "none";
-        }
-    });
-
-    ["new_task_todo", "new_task_inprogress", "new_task_done"].forEach(btnId => {
-        const button = document.getElementById(btnId);
-        button.addEventListener('click', function () {
-            const columnKey = btnId.split("new_task_")[1];
-            createNewTask(taskSections[columnKey], columnKey);
-        });
-    });
-
-    ["new_task_todo", "new_task_inprogress", "new_task_done"].forEach(btnId => {
-        const button = document.getElementById(btnId);
-        button.addEventListener('click', function () {
-            const columnKey = btnId.split("new_task_")[1];
-            createNewTask(taskSections[columnKey], columnKey);
-        });
-    });
-
-    function createNewTask(section, columnKey) {
-        const taskCard = document.createElement("div");
-        taskCard.className = "task";
-        taskCard.setAttribute("draggable", "true");
-
-        const taskHeadline = document.createElement("div");
-        taskHeadline.className = "task_headline";
-
-        const inputField = document.createElement("input");
-        inputField.type = "text";
-        inputField.placeholder = "Enter task title and press Enter";
-        inputField.classList.add("task_input_style");
-
-        taskHeadline.appendChild(inputField);
-
-        const taskId = `TASK-${taskCounter}`;
-
-        const taskFooter = document.createElement("div");
-        taskFooter.className = "task_footer";
-
-        const iconButton = document.createElement("button");
-        iconButton.className = "icon-selector-btn";
-        iconButton.innerHTML = '<i class="bi bi-clipboard-check text-primary"></i>';
-        iconButton.dataset.icon = "clipboard-check";
-        iconButton.dataset.color = "text-primary";
-
-        const popup = document.createElement("div");
-        popup.className = "icon-popup";
-        popup.innerHTML = `
-            <div class="icon-option" data-icon="clipboard-check" data-color="text-primary"><i class="bi bi-clipboard-check text-primary"></i></div>
-            <div class="icon-option" data-icon="bug" data-color="text-danger"><i class="bi bi-bug text-danger"></i></div>
-            <div class="icon-option" data-icon="card-list" data-color="text-success"><i class="bi bi-card-list text-success"></i></div>
-        `;
-        popup.style.display = "none";
-
-        iconButton.addEventListener("click", function (e) {
-            e.stopPropagation();
-            popup.style.display = popup.style.display === "none" ? "block" : "none";
-        });
-
-        document.addEventListener("click", () => popup.style.display = "none");
-
-        popup.querySelectorAll(".icon-option").forEach(option => {
-            option.addEventListener("click", function () {
-                const icon = this.dataset.icon;
-                const color = this.dataset.color;
-                iconButton.innerHTML = `<i class='bi bi-${icon} ${color}'></i>`;
-                iconButton.dataset.icon = icon;
-                iconButton.dataset.color = color;
-                popup.style.display = "none";
-            });
-        });
-
-        const idSpan = document.createElement("span");
-        idSpan.textContent = taskId;
-        idSpan.classList.add("task-id");
-
-        const profileBtn = document.createElement("button");
-        profileBtn.className = "profile-btn";
-        profileBtn.innerHTML = '<img src="profile-pic.png" class="membr_profile_img small-profile">';
-
-        taskFooter.appendChild(idSpan);
-        taskFooter.appendChild(iconButton);
-        taskFooter.appendChild(popup);
-        taskFooter.appendChild(profileBtn);
-
-        taskCard.appendChild(taskHeadline);
-        taskCard.appendChild(taskFooter);
-        section.appendChild(taskCard);
-
-        inputField.focus();
-
-        inputField.addEventListener("keydown", function (event) {
-            if (event.key === "Enter") {
-                const taskTitle = inputField.value.trim();
-                if (taskTitle === "") {
-                    alert("Please enter a task title.");
-                    return;
-                }
-
-                const titleSpan = document.createElement("span");
-                titleSpan.textContent = taskTitle;
-                taskHeadline.innerHTML = "";
-                taskHeadline.appendChild(titleSpan);
-
-                const icon = iconButton.dataset.icon || "clipboard-check";
-                const color = iconButton.dataset.color || "text-info";
-
-                savedTasks.push({ title: taskTitle, id: taskId, icon: icon, color: color, column: columnKey });
-                localStorage.setItem("tasks", JSON.stringify(savedTasks));
-
-                taskCounter++;
-                localStorage.setItem("taskCounter", taskCounter);
-            }
-        });
-
-        enableDragEvents(taskCard);
-    }
-
-    function createTaskCard(title, id, icon = "clipboard-check", color = "text-info", columnKey = "todo") {
-        const taskCard = document.createElement("div");
-        taskCard.className = "task";
-        taskCard.setAttribute("draggable", "true");
-
-        const taskHeadline = document.createElement("div");
-        taskHeadline.className = "task_headline";
-        const titleSpan = document.createElement("span");
-        titleSpan.textContent = title;
-        taskHeadline.appendChild(titleSpan);
-
-        const taskFooter = document.createElement("div");
-        taskFooter.className = "task_footer";
-
-        const idSpan = document.createElement("span");
-        idSpan.textContent = id;
-        idSpan.classList.add("task-id");
-
-        const iconEl = document.createElement("i");
-        iconEl.className = `bi bi-${icon} ${color}`;
-
-        const profileBtn = document.createElement("button");
-        profileBtn.className = "profile-btn";
-        profileBtn.innerHTML = '<img src="profile-pic.png" class="membr_profile_img small-profile">';
-
-        taskFooter.appendChild(idSpan);
-        taskFooter.appendChild(iconEl);
-        taskFooter.appendChild(profileBtn);
-
-        taskCard.appendChild(taskHeadline);
-        taskCard.appendChild(taskFooter);
-        taskSections[columnKey]?.appendChild(taskCard);
-
-        enableDragEvents(taskCard);
-    }
-
-    function enableDragEvents(task) {
-        if (!task.id) {
-            task.id = "task_" + Date.now();
-        }
-
-        task.setAttribute("draggable", "true");
-
-        task.addEventListener("dragstart", function (e) {
-            e.dataTransfer.setData("text/plain", task.id);
-        });
-    }
-
-    Object.entries(taskSections).forEach(([key, section]) => {
-        section.addEventListener("dragover", function (e) {
-            e.preventDefault();
-        });
-
-        section.addEventListener("drop", function (e) {
-            e.preventDefault();
-            const taskId = e.dataTransfer.getData("text/plain");
-            const draggedTask = document.getElementById(taskId);
-
-            if (draggedTask instanceof Node) {
-                section.appendChild(draggedTask);
-                const titleElement = draggedTask.querySelector(".task_headline span");
-                const idElement = draggedTask.querySelector(".task_footer .task-id");
-
-                if (key === "done") {
-                    if (titleElement) {
-                        titleElement.style.textDecoration = "line-through";
-                    }
-                    if (idElement) {
-                        idElement.style.textDecoration = "line-through";
-                    }
-                } else {
-                    if (titleElement) {
-                        titleElement.style.textDecoration = "none";
-                    }
-                    if (idElement) {
-                        idElement.style.textDecoration = "none";
-                    }
-                }
-                saveAllTasks();
-            }
-        });
-    });
-
-    function saveAllTasks() {
-        const tasksData = [];
-        Object.entries(taskSections).forEach(([key, section]) => {
-            section.querySelectorAll(".task").forEach(task => {
-                const title = task.querySelector(".task_headline span")?.textContent || "";
-                const id = task.querySelector(".task_footer .task-id")?.textContent || "";
-                const iconClass = task.querySelector(".task_footer i")?.classList[1]?.replace("bi-", "") || "clipboard-check";
-                const colorClass = task.querySelector(".task_footer i")?.classList[2] || "text-info";
-                tasksData.push({ title, id, icon: iconClass, color: colorClass, column: key });
-                console.log({ title, id, icon: iconClass, color: colorClass, column: key });
-            });
-        });
-        localStorage.setItem("tasks", JSON.stringify(tasksData));
-    }
+    loadColumnsFromLocalStorage();
+    loadTasksFromLocalStorage();
 });
+
+const task_board_section = document.getElementById("task_board_section");
+const addColumnBtn = document.getElementById("add_column_btn");
+const column_add = document.getElementById("column_add");
+const closePopupBtn = document.getElementById("close_popup_btn");
+const saveColumnBtn = document.getElementById("save_column_btn");
+const columnNameInput = document.getElementById("column_name_input");
+
+// Event listeners
+addColumnBtn.addEventListener("click", () => column_add.style.display = "block");
+closePopupBtn.addEventListener("click", () => column_add.style.display = "none");
+
+saveColumnBtn.addEventListener("click", function () {
+    const columnName = columnNameInput.value.trim();
+    if (!columnName) {
+        alert("Please enter a column name.");
+        return;
+    }
+    addColumn(columnName);
+    saveColumnsToLocalStorage();
+    column_add.style.display = "none";
+    columnNameInput.value = "";
+});
+
+function addColumn(columnName) {
+    const columnId = columnName.toLowerCase().replace(/\s+/g, "_");
+    const newColumn = document.createElement("div");
+    newColumn.className = "column";
+    newColumn.id = columnId;
+    newColumn.innerHTML = `
+        <div class="column_name_section"><h4>${columnName}</h4></div>
+        <div class="task_section" id="${columnId}_task_section"></div>
+        <div class="add_new_task_section">
+            <button class="add_new_task_btn" id="new_task_${columnId}">
+                <i class="bi bi-plus-square text-secondary" style="font-size: 30px;"></i>
+                <span>Create New Task</span>
+            </button>
+        </div>
+    `;
+    task_board_section.appendChild(newColumn);
+    document.getElementById(`new_task_${columnId}`).addEventListener("click", () => createNewTask(columnId));
+}
+
+function saveColumnsToLocalStorage() {
+    const columns = [...document.querySelectorAll(".column")].map(column => ({
+        columnId: column.id,
+        columnName: column.querySelector(".column_name_section h4").textContent,
+        taskSectionId: `${column.id}_task_section`,
+        newsectionbtn: `new_task_${column.id}`
+    }));
+    localStorage.setItem("columns", JSON.stringify(columns));
+}
+
+function loadColumnsFromLocalStorage() {
+    const storedColumns = JSON.parse(localStorage.getItem("columns")) || [];
+    storedColumns.forEach(column => addColumn(column.columnName));
+}
+
+function createNewTask(columnId) {
+    const section = document.getElementById(`${columnId}_task_section`);
+    if (!section) return;
+    const taskCard = document.createElement("div");
+    taskCard.className = "task";
+    taskCard.setAttribute("draggable", "true");
+    taskCard.id = `TASK-${Date.now()}`;
+    taskCard.innerHTML = `<textarea placeholder="Enter task title and press Enter" rows="2" class="task_input_style"></textarea>`;
+    section.appendChild(taskCard);
+    const inputField = taskCard.querySelector("textarea");
+    inputField.focus();
+
+    inputField.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            const taskTitle = inputField.value.trim();
+            if (!taskTitle) {
+                taskCard.remove();
+                return;
+            }
+            taskCard.innerHTML = `<span>${taskTitle}</span>`;
+            saveTask(taskTitle, columnId, taskCard.id);
+        }
+    });
+
+    enableDragEvents(taskCard);
+}
+
+function saveTask(title, columnId, taskId) {
+    const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    savedTasks.push({ title, id: taskId, column: columnId });
+    localStorage.setItem("tasks", JSON.stringify(savedTasks));
+}
+
+function loadTasksFromLocalStorage() {
+    const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    savedTasks.forEach(({ title, id, column }) => {
+        const section = document.getElementById(`${column}_task_section`);
+        if (section) createTaskCard(title, id, section);
+    });
+}
+
+function createTaskCard(title, id, section) {
+    const taskCard = document.createElement("div");
+    taskCard.className = "task";
+    taskCard.setAttribute("draggable", "true");
+    taskCard.id = id;
+    taskCard.innerHTML = `<span>${title}</span>`;
+    section.appendChild(taskCard);
+    enableDragEvents(taskCard);
+}
+
+function enableDragEvents(task) {
+    task.addEventListener("dragstart", (e) => e.dataTransfer.setData("text/plain", task.id));
+}
+
+document.querySelectorAll(".task_section").forEach(section => {
+    section.addEventListener("dragover", e => e.preventDefault());
+    section.addEventListener("drop", function (e) {
+        e.preventDefault();
+        const taskId = e.dataTransfer.getData("text/plain");
+        const draggedTask = document.getElementById(taskId);
+        if (draggedTask) {
+            section.appendChild(draggedTask);
+            updateTasksInLocalStorage();
+        }
+    });
+});
+
+function updateTasksInLocalStorage() {
+    const tasks = [...document.querySelectorAll(".task")].map(task => ({
+        title: task.textContent.trim(),
+        id: task.id,
+        column: task.closest(".task_section").id.replace("_task_section", "")
+    }));
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
