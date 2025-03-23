@@ -1,5 +1,67 @@
 import './index.css';
 
+//Reusable Pop-up
+
+function showConfirmationPopup(message, callback) {
+    const popup = document.createElement("div");
+    popup.classList.add("confirmation-popup");
+    popup.innerHTML = `
+        <div class="confirmation-popup-content">
+            <i class="bi bi-question-diamond-fill text-warning confirmation_icon" style="font-size: 50px;"></i>
+            <p>${message}</p>
+            <button id="confirmBtn"><span>Confirm</span></button>
+            <button id="cancelBtn"><span>Cancel</span></button>
+        </div>
+    `;
+    document.body.appendChild(popup);
+
+    document.getElementById("cancelBtn").addEventListener("click", function () {
+        document.body.removeChild(popup);
+    });
+
+    document.getElementById("confirmBtn").addEventListener("click", function () {
+        callback();
+        document.body.removeChild(popup);
+    });
+}
+
+
+// Sprint compltete pop-up message
+
+document.getElementById("Sprint_compelte_btn").addEventListener("click", function () {
+    showConfirmationPopup("Do you want to complete this sprint?", function () {
+
+    });
+});
+
+
+
+
+//Sidebar Expand/Collapse Function
+
+document.addEventListener("DOMContentLoaded", function () {
+    const sidebar = document.querySelector(".sidebar");
+    const board = document.querySelector(".body_of_board");
+    const toggleButton = document.querySelector(".slider_collaps_button");
+    const icon = toggleButton.querySelector("i");
+
+    toggleButton.addEventListener("click", function () {
+        sidebar.classList.toggle("collapsed");
+
+        // Change the icon direction
+        if (sidebar.classList.contains("collapsed")) {
+            icon.classList.replace("bi-chevron-double-left", "bi-chevron-double-right");
+            board.style.width = "calc(100% - 90px)";
+        } else {
+            icon.classList.replace("bi-chevron-double-right", "bi-chevron-double-left");
+            board.style.width = "calc(100% - 210px)";
+        }
+    });
+});
+
+
+//Task & column add/drag/save/loading funtion
+
 document.addEventListener("DOMContentLoaded", function () {
     loadColumnsFromLocalStorage();
     loadTasksFromLocalStorage();
@@ -18,7 +80,14 @@ const columnNameInput = document.getElementById("column_name_input");
 addColumnBtn.addEventListener("click", () => column_add.style.display = "block");
 closePopupBtn.addEventListener("click", () => column_add.style.display = "none");
 
-saveColumnBtn.addEventListener("click", function () {
+saveColumnBtn.addEventListener("click", addNewColumn);
+columnNameInput.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        addNewColumn();
+    }
+});
+
+function addNewColumn() {
     const columnName = columnNameInput.value.trim();
     if (!columnName) {
         alert("Please enter a column name.");
@@ -28,7 +97,7 @@ saveColumnBtn.addEventListener("click", function () {
     saveColumnsToLocalStorage();
     column_add.style.display = "none";
     columnNameInput.value = "";
-});
+}
 
 function addColumn(columnName) {
     const columnId = columnName.replace(/\s+/g, "-");
@@ -217,14 +286,6 @@ function createNewTask(columnId) {
             localStorage.setItem("taskCounter", taskCounter);
         }
         
-        else{
-            document.addEventListener("click", function (event) {
-                if (!taskCard.contains(event.target)) {
-                    taskCard.style.display = "none"; 
-                }
-            });
-        }
-        
     });
 
     enableDragEvents(taskCard);
@@ -365,5 +426,7 @@ function enableDragEvents(task) {
         }
     });
 }
+
+
 
 
